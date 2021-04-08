@@ -27,5 +27,5 @@ func main() {
 		r.Save(file)
 	})
 
-	c.Visit(domain)
+	c.Visit("https://" + domain)
 }
