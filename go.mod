@@ -1,4 +1,4 @@
-module github.com/chrissxYT/rba-scrape
+module github.com/chrissxYT/css
 
 go 1.16
 

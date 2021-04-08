@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-	c := colly.NewCollector(colly.AllowedDomains("r-b-a.de"))
+	domain := os.Args[1]
+
+	c := colly.NewCollector(colly.AllowedDomains(domain))
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		e.Request.Visit(e.Attr("href"))
@@ -25,5 +27,5 @@ func main() {
 		r.Save(file)
 	})
 
-	c.Visit("https://r-b-a.de/")
+	c.Visit(domain)
 }
