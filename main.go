@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	domain := os.Args[1]
+	domain := os.Args[len(os.Args)-1]
 
 	c := colly.NewCollector(colly.AllowedDomains(domain))
 
@@ -27,5 +27,11 @@ func main() {
 		r.Save(file)
 	})
 
-	c.Visit("https://" + domain)
+	if len(os.Args) < 3 {
+		c.Visit("https://" + domain)
+	} else {
+		for i := 1; i < len(os.Args)-1; i++ {
+			c.Visit(os.Args[i])
+		}
+	}
 }
